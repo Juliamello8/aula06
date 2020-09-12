@@ -1,5 +1,7 @@
 package com.github.juliamello8.classes;
 
+import java.util.Scanner;
+
 public class Usuario {
 	private int id;
 	private String nome;
@@ -22,7 +24,13 @@ public class Usuario {
 		return email;
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		if(this.email.length() != 0 && this.email.indexOf('@')==1) {
+			if(this.email.indexOf('.')==1) {
+				this.email = email;																		
+			}
+		}else {
+			System.out.println ("E-mail inválido, favor conferir!");
+		}
 	}
 	public String getCargo() {
 		return cargo;
@@ -31,6 +39,18 @@ public class Usuario {
 		this.cargo = cargo;
 	}
 	
-	
+	public void CadastrarUsuario() {
+		try (Scanner leitor = new Scanner(System.in)) {			
+			System.out.println ("Nome: ");
+			nome = leitor.nextLine(); 
+
+			System.out.println ("E-mail: ");
+			email = leitor.nextLine(); 
+
+			System.out.println ("Cargo: ");
+			cargo = leitor.nextLine(); 
+
+		} 
+	} 	
 	
 }
